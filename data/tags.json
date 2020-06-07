@@ -1,6 +1,5 @@
 {
-  "*" : "All",
-  ".tag-2d" : "2D",
-  ".tag-fantasy" : "Fantasy",
-  ".tag-roguelike" : "Roguelike"
+  "2d" : "2D",
+  "fantasy" : "Fantasy",
+  "roguelike" : "Roguelike"
 }
