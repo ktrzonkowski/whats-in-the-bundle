@@ -3,11 +3,11 @@
     <title>WHAT'S IN THE BUNDLE</title>
   </head>
   <body>
-    <div>
-      <button>All</button>
+    <div class="button-group filter-button-group">
+      <button data-filter="*">all</button>
     </div>
     
-    <div id="content" class="grid" data-isotope='{ "itemSelector": ".grid-item", "layoutMode": "fitRows" }'>
+    <div id="content" class="grid">
       Loading...
     </div>
     
@@ -16,7 +16,7 @@
         <div class="grid-item
           {{~ game.tags :tag }} tag-{{=tag}} {{~}}
         ">
-          <a href="{{=game.url}}" target="_blank">{{=game.name}}></a>
+          <a href="{{=game.url}}" target="_blank">{{=game.name}}</a>
           <p>{{=game.description}}</p>
         </div>
       {{~}}
@@ -38,6 +38,16 @@
         .catch( (err) => {
           console.log(err);
         });
+      
+      var $grid = $('.grid').isotope({
+        itemSelector: '.grid-item'
+      });
+      
+      $('.filter-button-group').on( 'click', 'button', () => {
+        var filterValue = this.getAttribute('data-filter');
+        
+        $grid.isotope({ filter: filterValue });
+      });
     </script>
   </body>
 </html>
