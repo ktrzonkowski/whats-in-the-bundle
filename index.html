@@ -5,6 +5,7 @@
   <body>
     <div class="button-group filter-button-group">
       <button data-filter="*">all</button>
+      <button data-filter="tag-roguelike">Roguelike</button>
     </div>
     
     <div id="content" class="grid">
@@ -14,7 +15,7 @@
     <script id="gameTemplate" type="text/x-dot-template">
       {{~ it :game }}
         <div class="grid-item
-          {{~ game.tags :tag }} tag-{{=tag}} {{~}}
+          {{~ game.tags :tag }} tag-{{=tag.toLowerCase()}} {{~}}
         ">
           <a href="{{=game.url}}" target="_blank">{{=game.name}}</a>
           <p>{{=game.description}}</p>
