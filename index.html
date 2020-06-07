@@ -16,9 +16,9 @@
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     
     <script>
-      var template = document.getElementById('content').innerHTML = doT.template(document.getElementById('gameTemplate').text);
+      var template = doT.template(document.getElementById('gameTemplate').text);
       
-      template({
+      document.getElementById('content').innerHTML = template({
         "name" : "game name go here"
       });
     </script>
