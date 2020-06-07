@@ -18,8 +18,9 @@
     <script>
       var container = document.getElementById('content');
       fetch('/whats-in-the-bundle/data/games.json')
-        .then( (response) => {
-          console.log(response.json());
+        .then( (response) => response.json() )
+        .then( (games) => {
+          console.log(games);
         
           var template = doT.template(document.getElementById('gameTemplate').text);
 
