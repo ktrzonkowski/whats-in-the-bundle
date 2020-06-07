@@ -3,19 +3,24 @@
     <title>WHAT'S IN THE BUNDLE</title>
   </head>
   <body>
-    <div class="button-group filter-button-group">
-      <button data-filter="*">all</button>
-      <button data-filter="tag-roguelike">Roguelike</button>
+    <div id="tags" class="button-group filter-button-group">
+      Loading...
     </div>
     
     <div id="content" class="grid">
       Loading...
     </div>
     
+    <script id="filterTemplate" type="text/x-dot-template">
+      {{~ it :filter:value }}
+        <button data-filter="{{=value}}">{{filter}}</button>
+      {{~}}
+    </script>
+    
     <script id="gameTemplate" type="text/x-dot-template">
       {{~ it :game }}
         <div class="grid-item
-          {{~ game.tags :tag }} tag-{{=tag.toLowerCase()}} {{~}}
+          {{~ game.tags :tag }} tag-{{=tag.toLowerCase()}}{{~}}
         ">
           <a href="{{=game.url}}" target="_blank">{{=game.name}}</a>
           <p>{{=game.description}}</p>
@@ -28,17 +33,22 @@
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     
     <script>
-      var container = document.getElementById('content');
-      fetch('/whats-in-the-bundle/data/games.json')
-        .then( (response) => response.json() )
-        .then( (games) => {
-          var template = doT.template(document.getElementById('gameTemplate').text);
+      function loadTemplate (url, templateId, containerId) {
+        fetch('url')
+          .then( (response) => response.json() )
+          .then( (data) => {
+            var container = document.getElementById(containerId);
+            var template = doT.template(document.getElementById(templateId).text);
 
-          container.innerHTML = template(games);
-        })
-        .catch( (err) => {
-          console.log(err);
-        });
+            container.innerHTML = template(data);
+          })
+          .catch( (err) => {
+            console.log(err);
+          });
+      };
+      
+      loadTemplate('/whats-in-the-bundle/data/games.json', 'gameTemplate', 'content');
+      loadTemplate('/whats-in-the-bundle/data/tags.json', 'filterTemplate', 'tags');
       
       var $grid = $('.grid').isotope({
         itemSelector: '.grid-item'
