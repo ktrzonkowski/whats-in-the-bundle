@@ -12,6 +12,7 @@
     </div>
     
     <script id="filterTemplate" type="text/x-dot-template">
+      <button data-filter="*">All</button>
       {{ for(var key in it) { }}
         <button data-filter="{{=key}}">{{=it[key]}}</button>
       {{ } }}
@@ -33,6 +34,8 @@
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     
     <script>
+      var globalData = {};
+      
       function loadTemplate (url, templateId, containerId) {
         fetch(url)
           .then( (response) => response.json() )
