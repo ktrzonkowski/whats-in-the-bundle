@@ -7,9 +7,11 @@
     </div>
     
     <script id="gameTemplate" type="text/x-dot-template">
-      <div class="grid-item">
-        {{=it.name}}
-      </div>
+      {{~ it :game }}
+        <div class="grid-item">
+          <h1>{{=game.name}}<h1>
+        </div>
+      {{~}}
     </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dot/1.1.3/doT.min.js"></script>
@@ -20,13 +22,9 @@
       fetch('/whats-in-the-bundle/data/games.json')
         .then( (response) => response.json() )
         .then( (games) => {
-          console.log(games);
-        
           var template = doT.template(document.getElementById('gameTemplate').text);
 
-          container.innerHTML = template({
-            "name" : "game name go here"
-          });
+          container.innerHTML = template(games);
         })
         .catch( (err) => {
           console.log(err);
