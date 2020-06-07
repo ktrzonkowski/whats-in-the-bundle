@@ -1,0 +1,30 @@
+[
+  {
+    "name" : "Last Knight: Rogue Rider Edition",
+    "url" : "https://tocogames.itch.io/last-knight",
+    "developer" : "Toco Games",
+    "description" : "Last Knight is over-the-top jousting action in a beautiful brutal fantasy world!",
+    "location" : {
+      "page": 1,
+      "row": 1
+    },
+    "rating" : {
+      "stars" : "3",
+      "ratings" : "10"
+    },
+    "genres" : [
+      "Action",
+      "Adventure",
+      "Platformer"
+    ],
+    "platforms" : [
+      "Windows",
+      "macOS"
+    ],
+    "tags" : [
+      "Fantasy",
+      "jousting",
+      "Roguelike"
+    ]
+  }
+]
