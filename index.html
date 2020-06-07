@@ -16,11 +16,20 @@
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     
     <script>
-      var template = doT.template(document.getElementById('gameTemplate').text);
-      
-      document.getElementById('content').innerHTML = template({
-        "name" : "game name go here"
-      });
+      var container = document.getElementById('content');
+      fetch('/whats-in-the-bundle/data/games.json')
+        .then( (data) => {
+          console.log(data);
+        
+          var template = doT.template(document.getElementById('gameTemplate').text);
+
+          container.innerHTML = template({
+            "name" : "game name go here"
+          });
+        })
+        .catch( (err) => {
+          console.log(err);
+        });
     </script>
   </body>
 </html>
