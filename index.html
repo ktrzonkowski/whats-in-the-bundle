@@ -12,9 +12,9 @@
     </div>
     
     <script id="filterTemplate" type="text/x-dot-template">
-      {{~ it :filter:value }}
-        <button data-filter="{{=value}}">{{filter}}</button>
-      {{~}}
+      {{ for(var key in it) { }}
+        <button data-filter="{{=key}}">{{=it[key]}}</button>
+      {{ } }}
     </script>
     
     <script id="gameTemplate" type="text/x-dot-template">
