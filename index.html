@@ -43,7 +43,7 @@
         itemSelector: '.grid-item'
       });
       
-      $('.filter-button-group').on( 'click', 'button', () => {
+      $('.filter-button-group').on( 'click', 'button', function () {
         var filterValue = this.getAttribute('data-filter');
         
         $grid.isotope({ filter: filterValue });
