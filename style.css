@@ -55,6 +55,10 @@ body {
   margin: 0 10px;
 }
 
+.game_meta span::first-letter {
+  color: #7e7e7e;
+}
+
 .game-location div {
   float: left;
   display: inline-block;
