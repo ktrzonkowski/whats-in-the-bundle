@@ -6,7 +6,7 @@
   <body>
     <div class="filters">
       <strong>Tags:</strong>
-      <div id="tags" data-type="tag" class="button-group filter-button-group">
+      <div id="tag" data-type="tag" class="button-group filter-button-group">
         Loading...
       </div>
     </div>
@@ -70,7 +70,7 @@
 
               container.innerHTML = template(data);
 
-              resolve();
+              resolve(data);
             })
             .catch( (err) => {
               resolve();
@@ -78,29 +78,33 @@
         });
       };
 
-      var promises = [
-      	loadTemplate('/whats-in-the-bundle/data/games.json', 'gameTemplate', 'content'),
-      	loadTemplate('/whats-in-the-bundle/data/tags.json', 'filterTemplate', 'tags')
-      ];
-	    
-      Promise.all(promises).then( () => {
-        var $grid = $('.grid').isotope({
-          itemSelector: '.grid-item',
-          layoutMode: 'fitRows'
-        });
-	      
-        $('.filter-button-group').on( 'click', 'button', function () {
-          var filterType = this.parentNode.getAttribute('data-type');
-          var filterValue = this.getAttribute('data-filter');
-        
-          if (filterValue == "*") {
-            $grid.isotope({ filter: "*" });
+      loadTemplate('/whats-in-the-bundle/data/games.json', 'gameTemplate', 'content')
+        .then( (games) => {
+          var filters = {};
+            
+          for (var i = 0, len = games.length; i < len; i++) {
+            console.log(games[i]);
           }
-          else {
-            $grid.isotope({ filter: "." + filterType + "-" + filterValue });
-          }
+      
+          return loadTemplate('/whats-in-the-bundle/data/tags.json', 'filterTemplate', 'tag');
+        }).then( () => {
+          var $grid = $('.grid').isotope({
+            itemSelector: '.grid-item',
+            layoutMode: 'fitRows'
+          });
+
+          $('.filter-button-group').on( 'click', 'button', function () {
+            var filterType = this.parentNode.getAttribute('data-type');
+            var filterValue = this.getAttribute('data-filter');
+
+            if (filterValue == "*") {
+              $grid.isotope({ filter: "*" });
+            }
+            else {
+              $grid.isotope({ filter: "." + filterType + "-" + filterValue });
+            }
+          });
         });
-      });
     </script>
   </body>
 </html>
