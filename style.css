@@ -6,18 +6,8 @@ body {
   color: #8e8e8e;
 }
 
-.filters {
-  width: 25%;
-  float: left;
-}
-
-.filters strong {
+.filters label {
   display: block;
-}
-
-.grid {
-  width: 75%;
-  float: left;
 }
 
 .grid-item {
