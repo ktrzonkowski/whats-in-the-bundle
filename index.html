@@ -84,16 +84,11 @@
       };
 
       var promises = [
-	      loadTemplate('/whats-in-the-bundle/data/games.json', 'gameTemplate', 'content'),
+        loadTemplate('/whats-in-the-bundle/data/games.json', 'gameTemplate', 'content'),
         loadTemplate('/whats-in-the-bundle/data/meta.json', 'filterTemplate', 'filters')
       ];
       
       Promise.all(promises).then( () => {
-        var $grid = $('.grid').isotope({
-          itemSelector: '.grid-item',
-          layoutMode: 'fitRows'
-        });
-	      
         new LazyLoad({
           elements_selector: ".lazy"
         });
@@ -109,7 +104,8 @@
             selected = selected.concat($(this).select2("val"));
           });
 		
-          $grid.isotope({ filter: selected.join('') });
+          $('.grid-item').hide();
+          $('.grid-item').filter(selected.join(', ')).show();
         });
       });
     </script>
