@@ -3,7 +3,7 @@
     <title>WHAT'S IN THE BUNDLE</title>
   </head>
   <body>
-    <div id="tags" class="button-group filter-button-group">
+    <div id="tags" data-type="tag" class="button-group filter-button-group">
       Loading...
     </div>
     
@@ -13,7 +13,7 @@
     
     <script id="filterTemplate" type="text/x-dot-template">
       <button data-filter="*">All</button>
-      {{ for(var key in it) { }}
+      {{ for (var key in it) { }}
         <button data-filter="{{=key}}">{{=it[key]}}</button>
       {{ } }}
     </script>
@@ -58,9 +58,10 @@
       });
       
       $('.filter-button-group').on( 'click', 'button', function () {
+        var filterType = this.parentNode.getAttribute('data-type');
         var filterValue = this.getAttribute('data-filter');
         
-        $grid.isotope({ filter: filterValue });
+        $grid.isotope({ filter: "." + filterType + "-" + filterValue });
       });
     </script>
   </body>
