@@ -30,3 +30,9 @@ body {
   display: block;
   margin: 0 auto;
 }
+
+.game-content a {
+  color: #da2c49;
+  text-decoration: none;
+  font-weight: bold;
+}
