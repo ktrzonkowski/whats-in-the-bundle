@@ -6,10 +6,19 @@ body {
   color: #8e8e8e;
 }
 
-.grid:after {
+.grid:after, .filters:after {
   content: '';
   display: block;
   clear: both;
+}
+
+.filters strong {
+  display: block;
+}
+
+.filter-button-group {
+  width: 33.3333%;
+  float: left;
 }
 
 .grid-item {
