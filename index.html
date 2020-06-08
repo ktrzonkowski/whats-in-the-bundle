@@ -36,8 +36,6 @@
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     
     <script>
-      var globalData = {};
-      
       function loadTemplate (url, templateId, containerId) {
         fetch(url)
           .then( (response) => response.json() )
@@ -51,15 +49,19 @@
             console.log(err);
           });
       };
-      
-      loadTemplate('/whats-in-the-bundle/data/games.json', 'gameTemplate', 'content');
-      loadTemplate('/whats-in-the-bundle/data/tags.json', 'filterTemplate', 'tags');
-      
-      var $grid = $('.grid').isotope({
-        itemSelector: '.grid-item',
-        layoutMode: 'fitRows'
+
+      var promises = [
+      	loadTemplate('/whats-in-the-bundle/data/games.json', 'gameTemplate', 'content'),
+      	loadTemplate('/whats-in-the-bundle/data/tags.json', 'filterTemplate', 'tags')
+      ];
+	    
+      Promises.all(promises).then( () => {
+        var $grid = $('.grid').isotope({
+          itemSelector: '.grid-item',
+          layoutMode: 'fitRows'
+        });
       });
-      
+
       $('.filter-button-group').on( 'click', 'button', function () {
         var filterType = this.parentNode.getAttribute('data-type');
         var filterValue = this.getAttribute('data-filter');
