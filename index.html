@@ -19,7 +19,7 @@
         <div id="{{=filter}}" data-type="{{=filter}}" class="button-group filter-button-group">
           <strong>{{=filter.toUpperCase()}}S:</strong>
           <button data-filter="*">All</button>
-          {{ for (var key in filter) { }}
+          {{ for (var key in it[filter]) { }}
             <button data-filter="{{=key}}">{{=filter[key]}}</button>
           {{ } }}
         </div>
