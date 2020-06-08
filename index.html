@@ -94,6 +94,10 @@
           itemSelector: '.grid-item',
           layoutMode: 'fitRows'
         });
+	      
+        new LazyLoad({
+          elements_selector: ".lazy"
+        });
         
         $('select').select2();
 
