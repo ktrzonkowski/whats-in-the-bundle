@@ -20,7 +20,7 @@
           <strong>{{=filter.toUpperCase()}}S:</strong>
           <button data-filter="*">All</button>
           {{ for (var key in it[filter]) { }}
-            <button data-filter="{{=filter}}-{{=key}}">{{=it[filter][key]}}</button>
+            <button data-filter=".{{=filter}}-{{=key}}">{{=it[filter][key]}}</button>
           {{ } }}
         </div>
       {{ } }}
