@@ -9,19 +9,15 @@
       "page": 1,
       "row": 1
     },
-    "genres" : [
-      "Action",
-      "Adventure",
-      "Platformer"
-    ],
-    "platforms" : [
-      "Windows",
-      "macOS"
-    ],
-    "tags" : [
-      "fantasy",
-      "jousting",
-      "roguelike"
+    "meta" : [
+      "genre-action",
+      "genre-adventure",
+      "genre-platformer",
+      "platform-windows",
+      "platform-macos",
+      "tag-fantasy",
+      "tag-jousting",
+      "tag-roguelike"
     ]
   }
 ]
