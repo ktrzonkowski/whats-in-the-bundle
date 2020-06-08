@@ -103,9 +103,14 @@
           $("select").each(function () {
             selected = selected.concat($(this).select2("val"));
           });
-		
-          $('.grid-item').hide();
-          $('.grid-item').filter(selected.join(', ')).show();
+
+          if (selected.length > 0) {
+            $('.grid-item').hide();
+            $('.grid-item').filter(selected.join(', ')).show();
+          }
+          else {
+            $('.grid-item').show(); 
+          }
         });
       });
     </script>
