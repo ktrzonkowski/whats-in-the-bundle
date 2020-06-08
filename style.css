@@ -2,10 +2,8 @@
 
 body {
   font-family: sans-serif;
-}
-
-.grid {
-  border: 1px solid #333;
+  background-color: #191919;
+  color: #8e8e8e;
 }
 
 .grid:after {
@@ -15,8 +13,11 @@ body {
 }
 
 .grid-item {
+  background: #111111;
   position: relative;
   float: left;
+  margin: 10px;
+  padding: 10px;
 }
 
 .grid-item > * {
