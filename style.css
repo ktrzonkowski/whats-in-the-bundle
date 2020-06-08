@@ -23,11 +23,6 @@ body {
   width: 90%;
 }
 
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .grid-item {
   background: #111111;
   position: relative;
