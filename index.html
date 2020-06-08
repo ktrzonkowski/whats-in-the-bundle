@@ -37,17 +37,22 @@
     
     <script>
       function loadTemplate (url, templateId, containerId) {
-        fetch(url)
-          .then( (response) => response.json() )
-          .then( (data) => {
-            var container = document.getElementById(containerId);
-            var template = doT.template(document.getElementById(templateId).text);
+        return new Promise( (resolve, reject) => {
+          fetch(url)
+            .then( (response) => response.json() )
+            .then( (data) => {
+              var container = document.getElementById(containerId);
+              var template = doT.template(document.getElementById(templateId).text);
 
-            container.innerHTML = template(data);
-          })
-          .catch( (err) => {
-            console.log(err);
+              container.innerHTML = template(data);
+
+              resolve();
+            })
+            .catch( (err) => {
+              resolve();
+            });
           });
+        });
       };
 
       var promises = [
