@@ -6,6 +6,14 @@ body {
   color: #8e8e8e;
 }
 
+.filters
+  display: flex;
+}
+
+.filter-group {
+  flex: 1;
+}
+
 .filters label {
   display: block;
 }
