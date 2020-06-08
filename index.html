@@ -105,12 +105,10 @@
           var selected = [];
           
           $("select").each(function () {
-            console.log($(this).select2("val"));
+            selected = selected.concat($(this).select2("val"));
           });
-        });
-
-        $('.filter-button-group').on( 'click', 'button', function () {
-          $grid.isotope({ filter: this.getAttribute('data-filter') });
+		
+          $grid.isotope({ filter: selected });
         });
       });
     </script>
