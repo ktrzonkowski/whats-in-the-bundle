@@ -6,22 +6,30 @@
     <link rel="stylesheet" href="/whats-in-the-bundle/style.css">
   </head>
   <body>
-    <div id="filters" class="filters">
-      Loading...
-    </div>
-    
-    <div id="content" class="grid">
-      Loading...
+    <div class="container-fluid">
+      <div class="row">
+        <div id="filters" class="filters col">
+          Loading...
+        </div>
+      </div>
+      
+      <div class="row">
+        <div id="content" class="grid col">
+          Loading...
+        </div>
+      </div>
     </div>
     
     <script id="filterTemplate" type="text/x-dot-template">
       {{ for (var filter in it) { }}
-        <div id="{{=filter}}" class="button-group filter-button-group">
-          <strong>{{=filter.toUpperCase()}}S:</strong>
-          <button data-filter="*">All</button>
-          {{ for (var key in it[filter]) { }}
-            <button data-filter=".{{=filter}}-{{=key}}">{{=it[filter][key]}}</button>
-          {{ } }}
+        <div id="{{=filter}}" class="filter-group">
+          <label>{{=filter.toUpperCase()}}S</label>
+          <select multiple="multiple">
+            <option value="*">All</option>
+            {{ for (var key in it[filter]) { }}
+              <option value=".{{=filter}}-{{=key}}">{{=it[filter][key]}}</option>
+            {{ } }}
+          </select>
         </div>
       {{ } }}
     </script>
