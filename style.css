@@ -41,10 +41,14 @@ body {
   font-weight: bold;
 }
 
+.game-content p {
+  margin-bottom: 5px;
+}
+
 .game-meta {
   text-align: justify;
-  padding: 10px;
-  font-size: 90%;
+  padding: 0 10px 10px;
+  font-size: 80%;
 }
 
 .game_meta span {
