@@ -23,7 +23,7 @@
           <select multiple="multiple">
             <option value="*">All</option>
             {{ for (var key in it[filter]) { }}
-              <option value=".{{=filter}}-{{=key}}">{{=it[filter][key]}}</option>
+              <option value=".{{=key}}">{{=it[filter][key]}}</option>
             {{ } }}
           </select>
         </div>
