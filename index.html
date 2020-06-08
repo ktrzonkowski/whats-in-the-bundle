@@ -98,7 +98,9 @@
           elements_selector: ".lazy"
         });
         
-        $('select').select2();
+        $('select').select2({
+          sorter: data => data.sort((a, b) => a.text.localeCompare(b.text))
+        });
         
         $('#filters').on('change', 'select', function (e) {
           var selected = [];
