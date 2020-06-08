@@ -31,7 +31,6 @@
       {{~}}
     </script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dot/1.1.3/doT.min.js"></script>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     
@@ -56,7 +55,8 @@
       loadTemplate('/whats-in-the-bundle/data/tags.json', 'filterTemplate', 'tags');
       
       var $grid = $('.grid').isotope({
-        itemSelector: '.grid-item'
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows'
       });
       
       $('.filter-button-group').on( 'click', 'button', function () {
@@ -67,7 +67,6 @@
           $grid.isotope({ filter: "*" });
         }
         else {
-          console.log("." + filterType + "-" + filterValue);
           $grid.isotope({ filter: "." + filterType + "-" + filterValue });
         }
       });
