@@ -1,0 +1,25 @@
+.grid {
+  border: 1px solid #333;
+}
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.grid-item {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  padding: 10px;
+  background: #888;
+  color: #262524;
+}
+
+.grid-item > * {
+  margin: 0;
+  padding: 0;
+}
