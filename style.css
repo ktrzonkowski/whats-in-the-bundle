@@ -41,6 +41,16 @@ body {
   font-weight: bold;
 }
 
+.game-meta {
+  text-align: justify;
+  padding: 10px;
+  font-size: 90%;
+}
+
+.game_meta span {
+  margin: 0 10px;
+}
+
 .game-location div {
   float: left;
   display: inline-block;
