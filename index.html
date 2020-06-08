@@ -26,8 +26,20 @@
           <a href="{{=game.url}}" target="_blank">
             <img src="{{=game.image}}" title="{{=game.name}}" alt="{{=game.name}}">
           </a>
-          <a href="{{=game.url}}" target="_blank">{{=game.name}}</a>
-          <p>{{=game.description}}</p>
+          <div class="game-content">
+            <a href="{{=game.url}}" target="_blank">{{=game.name}}</a>
+            <p>{{=game.description}}</p>
+          </div>
+          <div class="game-location">
+            <div class="page">
+              PAGE<br>
+              {{=game.location.page}}
+            </div>
+            <div class="row">
+              ROW<br>
+              {{=game.location.row}}
+            </div>
+          </div>
         </div>
       {{~}}
     </script>
