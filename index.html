@@ -22,9 +22,7 @@
     
     <script id="gameTemplate" type="text/x-dot-template">
       {{~ it :game }}
-        <div class="grid-item
-          {{~ game.tags :tag }} tag-{{=tag.toLowerCase()}}{{~}}
-        ">
+        <div class="grid-item{{~ game.tags :tag }} tag-{{=tag.toLowerCase()}}{{~}}">
           <a href="{{=game.url}}" target="_blank">{{=game.name}}</a>
           <p>{{=game.description}}</p>
         </div>
