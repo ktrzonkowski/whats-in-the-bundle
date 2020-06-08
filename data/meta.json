@@ -1,0 +1,13 @@
+{
+  "platform" : {
+    "windows" : "Windows",
+    "macos" : "macOS"
+  },
+  "genre" : {
+    "action" : "Action",
+  },
+  "tag" : {
+    "fantasy" : "Fantasy",
+    "roguelike" : "Roguelike"
+  }
+}
