@@ -37,6 +37,9 @@
               PAGE<br>
               {{=game.location.page}}
             </div>
+            <div class="game-meta">
+              {{~ game.tags :tag }}<span>#tag-{{=tag.toLowerCase()}}</span> {{~}}
+            </div>
             <div class="row">
               ROW<br>
               {{=game.location.row}}
