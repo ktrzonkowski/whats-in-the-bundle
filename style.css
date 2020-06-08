@@ -6,18 +6,17 @@ body {
   color: #8e8e8e;
 }
 
-.grid:after, .filters:after {
-  content: '';
-  display: block;
-  clear: both;
+.filters {
+  width: 25%;
+  float: left;
 }
 
 .filters strong {
   display: block;
 }
 
-.filter-button-group {
-  width: 33.3333%;
+.grid {
+  width: 75%;
   float: left;
 }
 
