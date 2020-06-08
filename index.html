@@ -21,7 +21,6 @@
         <div id="{{=filter}}" class="filter-group col">
           <label>{{=filter.toUpperCase()}}S</label>
           <select multiple="multiple">
-            <option value="*">All</option>
             {{ for (var key in it[filter]) { }}
               <option value=".{{=key}}">{{=it[filter][key]}}</option>
             {{ } }}
