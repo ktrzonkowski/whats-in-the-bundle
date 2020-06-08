@@ -16,6 +16,11 @@ body {
 
 .filters label {
   display: block;
+  margin-bottom: 5px;
+}
+
+.filters select {
+  width: 90%;
 }
 
 .grid-item {
