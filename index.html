@@ -4,11 +4,8 @@
     <link rel="stylesheet" href="/whats-in-the-bundle/style.css">
   </head>
   <body>
-    <div class="filters">
-      <strong>Tags:</strong>
-      <div id="tag" data-type="tag" class="button-group filter-button-group">
-        Loading...
-      </div>
+    <div id="filters" class="filters">
+      Loading...
     </div>
 	  
 	  <hr>
@@ -18,9 +15,14 @@
     </div>
     
     <script id="filterTemplate" type="text/x-dot-template">
-      <button data-filter="*">All</button>
-      {{ for (var key in it) { }}
-        <button data-filter="{{=key}}">{{=it[key]}}</button>
+      {{ for (var filter in it) { }}
+        <strong>{{=filter.toUpperCase()}}S:</strong>
+        <div id="{{=filter}}" data-type="{{=filter}}" class="button-group filter-button-group">
+          <button data-filter="*">All</button>
+          {{ for (var key in filter.meta) { }}
+            <button data-filter="{{=key}}">{{=it[key]}}</button>
+          {{ } }}
+        </div>
       {{ } }}
     </script>
     
@@ -35,8 +37,8 @@
             <p>{{=game.description}}</p>
           </div>
           <div class="game-meta">
-            {{~ game.tags :tag }}
-              <span>#{{=tag.replace(/^(tag|genre|platform)-/, '')}}</span>
+            {{~ game.meta :meta }}
+              <span>#{{=meta.replace(/^(tag|genre|platform)-/, '')}}</span>
             {{~}}
           </div>
           <div class="game-location">
@@ -70,7 +72,7 @@
 
               container.innerHTML = template(data);
 
-              resolve(data);
+              resolve();
             })
             .catch( (err) => {
               resolve();
@@ -78,15 +80,9 @@
         });
       };
 
-      loadTemplate('/whats-in-the-bundle/data/games.json', 'gameTemplate', 'content')
-        .then( (games) => {
-          var filters = {};
-            
-          for (var i = 0, len = games.length; i < len; i++) {
-            console.log(games[i]);
-          }
-      
-          return loadTemplate('/whats-in-the-bundle/data/tags.json', 'filterTemplate', 'tag');
+      var promises = [
+	      loadTemplate('/whats-in-the-bundle/data/games.json', 'gameTemplate', 'content'),
+        loadTemplate('/whats-in-the-bundle/data/meta.json', 'filterTemplate', 'filters');
         }).then( () => {
           var $grid = $('.grid').isotope({
             itemSelector: '.grid-item',
