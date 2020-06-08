@@ -108,7 +108,7 @@
             selected = selected.concat($(this).select2("val"));
           });
 		
-          $grid.isotope({ filter: selected });
+          $grid.isotope({ filter: selected.join('') });
         });
       });
     </script>
