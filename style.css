@@ -42,6 +42,8 @@ body {
 }
 
 .game-location div {
+  float: left;
+  display: inline-block;
   width: 50%;
   text-align: center;
   background: #da2c49;
