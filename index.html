@@ -16,11 +16,11 @@
     
     <script id="filterTemplate" type="text/x-dot-template">
       {{ for (var filter in it) { }}
-        <strong>{{=filter.toUpperCase()}}S:</strong>
         <div id="{{=filter}}" data-type="{{=filter}}" class="button-group filter-button-group">
+          <strong>{{=filter.toUpperCase()}}S:</strong>
           <button data-filter="*">All</button>
-          {{ for (var key in filter.meta) { }}
-            <button data-filter="{{=key}}">{{=it[key]}}</button>
+          {{ for (var key in filter) { }}
+            <button data-filter="{{=key}}">{{=filter[key]}}</button>
           {{ } }}
         </div>
       {{ } }}
