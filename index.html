@@ -2,15 +2,12 @@
 <html lang="en">
   <head>
     <title>WHAT'S IN THE BUNDLE</title>
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/whats-in-the-bundle/style.css">
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row">
-        <div id="filters" class="filters col">
-          Loading...
-        </div>
+      <div id="filters" class="filters row">
       </div>
       
       <div class="row">
@@ -22,7 +19,7 @@
     
     <script id="filterTemplate" type="text/x-dot-template">
       {{ for (var filter in it) { }}
-        <div id="{{=filter}}" class="filter-group">
+        <div id="{{=filter}}" class="filter-group col">
           <label>{{=filter.toUpperCase()}}S</label>
           <select multiple="multiple">
             <option value="*">All</option>
