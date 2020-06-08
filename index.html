@@ -55,7 +55,7 @@
       	loadTemplate('/whats-in-the-bundle/data/tags.json', 'filterTemplate', 'tags')
       ];
 	    
-      Promises.all(promises).then( () => {
+      Promise.all(promises).then( () => {
         var $grid = $('.grid').isotope({
           itemSelector: '.grid-item',
           layoutMode: 'fitRows'
