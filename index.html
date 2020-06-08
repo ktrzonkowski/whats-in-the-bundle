@@ -33,7 +33,10 @@
             <p>{{=game.description}}</p>
           </div>
           <div class="game-meta">
-            {{~ game.tags :tag }}<span>#tag-{{=tag.toLowerCase()}}</span> {{~}}
+            {{~ game.tags :tag }}
+              {{ var tmp = tag.toLowerCase().split('-'); tmp.pop(); }}
+              <span>#{{=tmp.join('-')}}</span>
+            {{~}}
           </div>
           <div class="game-location">
             <div class="page">
