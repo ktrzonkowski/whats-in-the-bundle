@@ -31,8 +31,20 @@ body {
   margin: 0 auto;
 }
 
+.game-content {
+  padding: 15px;
+}
+
 .game-content a {
   color: #da2c49;
   text-decoration: none;
+  font-weight: bold;
+}
+
+.game-location div {
+  width: 50%;
+  text-align: center;
+  background: #da2c49;
+  color: #ffffff;
   font-weight: bold;
 }
