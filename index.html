@@ -100,6 +100,16 @@
         });
         
         $('select').select2();
+        
+        $('#filters').on('change', 'select', function (e) {
+          var selected = [];
+          
+          $("select").each(function () {
+            selected.concat($(this).select2("val"));
+          });
+          
+          console.log(selected);
+        });
 
         $('.filter-button-group').on( 'click', 'button', function () {
           $grid.isotope({ filter: this.getAttribute('data-filter') });
