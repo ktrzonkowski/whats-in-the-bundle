@@ -16,7 +16,7 @@
     
     <script id="filterTemplate" type="text/x-dot-template">
       {{ for (var filter in it) { }}
-        <div id="{{=filter}}" data-type="{{=filter}}" class="button-group filter-button-group">
+        <div id="{{=filter}}" class="button-group filter-button-group">
           <strong>{{=filter.toUpperCase()}}S:</strong>
           <button data-filter="*">All</button>
           {{ for (var key in it[filter]) { }}
@@ -93,15 +93,7 @@
         });
 
         $('.filter-button-group').on( 'click', 'button', function () {
-          var filterType = this.parentNode.getAttribute('data-type');
-          var filterValue = this.getAttribute('data-filter');
-
-          if (filterValue == "*") {
-            $grid.isotope({ filter: "*" });
-          }
-          else {
-            $grid.isotope({ filter: "." + filterType + "-" + filterValue });
-          }
+          $grid.isotope({ filter: this.getAttribute('data-filter') });
         });
 	      
         new LazyLoad({
