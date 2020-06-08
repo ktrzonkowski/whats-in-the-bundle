@@ -36,8 +36,7 @@
           </div>
           <div class="game-meta">
             {{~ game.tags :tag }}
-              {{ var tmp = tag.toLowerCase().split('-'); tmp.pop(); }}
-              <span>#{{=tmp.join('-')}}</span>
+              <span>#{{=tag.replace(/^(tag|genre|platform)-/, '')}}</span>
             {{~}}
           </div>
           <div class="game-location">
