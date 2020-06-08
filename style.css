@@ -33,6 +33,7 @@ body {
   margin: 10px;
   max-width: 500px;
   width: calc(25% - 20px);
+  position: relative;
 }
 
 .grid-item > * {
@@ -74,6 +75,12 @@ body {
 
 .game_meta span::first-letter {
   color: #7e7e7e;
+}
+
+.game-location {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .game-location div {
