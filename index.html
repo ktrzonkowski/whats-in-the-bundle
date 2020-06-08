@@ -82,25 +82,27 @@
 
       var promises = [
 	      loadTemplate('/whats-in-the-bundle/data/games.json', 'gameTemplate', 'content'),
-        loadTemplate('/whats-in-the-bundle/data/meta.json', 'filterTemplate', 'filters');
-        }).then( () => {
-          var $grid = $('.grid').isotope({
-            itemSelector: '.grid-item',
-            layoutMode: 'fitRows'
-          });
-
-          $('.filter-button-group').on( 'click', 'button', function () {
-            var filterType = this.parentNode.getAttribute('data-type');
-            var filterValue = this.getAttribute('data-filter');
-
-            if (filterValue == "*") {
-              $grid.isotope({ filter: "*" });
-            }
-            else {
-              $grid.isotope({ filter: "." + filterType + "-" + filterValue });
-            }
-          });
+        loadTemplate('/whats-in-the-bundle/data/meta.json', 'filterTemplate', 'filters')
+      ];
+      
+      Promise.all(promises).then( () => {
+        var $grid = $('.grid').isotope({
+          itemSelector: '.grid-item',
+          layoutMode: 'fitRows'
         });
+
+        $('.filter-button-group').on( 'click', 'button', function () {
+          var filterType = this.parentNode.getAttribute('data-type');
+          var filterValue = this.getAttribute('data-filter');
+
+          if (filterValue == "*") {
+            $grid.isotope({ filter: "*" });
+          }
+          else {
+            $grid.isotope({ filter: "." + filterType + "-" + filterValue });
+          }
+        });
+      });
     </script>
   </body>
 </html>
