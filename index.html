@@ -62,9 +62,13 @@
         var filterType = this.parentNode.getAttribute('data-type');
         var filterValue = this.getAttribute('data-filter');
         
-        console.log(filterType, filterValue);
-        
-        $grid.isotope({ filter: "." + filterType + "-" + filterValue });
+        if (filterValue == "*") {
+          $grid.isotope({ filter: "*" });
+        }
+        else {
+          console.log("." + filterType + "-" + filterValue);
+          $grid.isotope({ filter: "." + filterType + "-" + filterValue });
+        }
       });
     </script>
   </body>
