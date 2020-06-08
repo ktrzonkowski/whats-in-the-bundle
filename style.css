@@ -23,14 +23,16 @@ body {
   width: 90%;
 }
 
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .grid-item {
   background: #111111;
-  position: relative;
-  float: left;
   margin: 10px;
   max-width: 500px;
   width: calc(25% - 20px);
-  overflow: hidden;
 }
 
 .grid-item > * {
