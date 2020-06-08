@@ -3,6 +3,7 @@
     <title>WHAT'S IN THE BUNDLE</title>
   </head>
   <body>
+    <strong>Tags:</strong>
     <div id="tags" data-type="tag" class="button-group filter-button-group">
       Loading...
     </div>
@@ -60,6 +61,8 @@
       $('.filter-button-group').on( 'click', 'button', function () {
         var filterType = this.parentNode.getAttribute('data-type');
         var filterValue = this.getAttribute('data-filter');
+        
+        console.log(filterType, filterValue);
         
         $grid.isotope({ filter: "." + filterType + "-" + filterValue });
       });
