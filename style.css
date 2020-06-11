@@ -18,10 +18,12 @@ a {
 
 #intro {
   text-align: center;
+  margin-bottom: 25px;
 }
 
 .filters {
   display: flex;
+  margin-bottom: 25px;
 }
 
 .filter-group {
@@ -40,6 +42,7 @@ a {
 .grid {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 15px;
 }
 
 .grid-item {
