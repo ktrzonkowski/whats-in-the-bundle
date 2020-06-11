@@ -16,6 +16,10 @@ a {
   font-weight: bold;
 }
 
+#intro {
+  text-align: center;
+}
+
 .filters {
   display: flex;
 }
