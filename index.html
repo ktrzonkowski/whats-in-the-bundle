@@ -82,22 +82,24 @@
           var metaContainer = document.getElementById('filters');
           var metaTemplate = doT.template(document.getElementById('filterTemplate').text);
 
-          var meta = {
-            "genre" : [],
-            "platform" : [],
-            "tag" : []
+          var filters = {
+            "genre" : {},
+            "platforms" : {},
+            "tags" : {}
           };
 
           for (var i in games) {
             var game = games[i];
 
-            meta["genre"] = Array.from(new Set(meta["genre"].concat(game.meta.genre)));
-            meta["platform"] = Array.from(new Set(meta["platform"].concat(game.meta.platforms)));
-            meta["tag"] = Array.from(new Set(meta["tag"].concat(game.meta.tags)));
+            for (var meta in game.meta) {
+              game.meta[meta].each( (key, value) => {
+                filters[meta][key] = value;
+              });
+            }
           }
 
           gameContainer.innerHTML = gameTemplate(games);
-          metaContainer.innerHTML = metaTemplate(meta);
+          metaContainer.innerHTML = metaTemplate(filters);
 
           $('#numGames').html(games.length);
         })
