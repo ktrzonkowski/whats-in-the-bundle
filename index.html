@@ -47,9 +47,9 @@
             <p>{{=game.description}}</p>
           </div>
           <div class="game-meta">
-            {{~ game.meta :meta }}
+            {{ for (var meta in game.meta) { }}
               <span>#{{=meta.replace(/^(tag|genre|platform)-/, '')}}</span>
-            {{~}}
+            {{ } }}
           </div>
           <div class="game-location">
             <div class="page">
