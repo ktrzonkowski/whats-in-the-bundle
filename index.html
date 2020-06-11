@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>WHAT'S IN THE BUNDLE</title>
+    <title>WHAT'S IN THE BUNDLE?</title>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/whats-in-the-bundle/style.css">
   </head>
@@ -54,7 +54,9 @@
           <div class="game-location">
             <div class="page">
               PAGE<br>
-              
+              {{~ game.location :loc:num}}
+                {{=num}}
+              {{~}}
             </div>
             <div class="row">
               ROW<br>
