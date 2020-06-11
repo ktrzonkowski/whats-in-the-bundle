@@ -90,13 +90,17 @@
 
           for (var i in games) {
             var game = games[i];
+            var reducedMeta = [];
 
-            for (var meta in game.meta) {
-              games[i].meta = game.meta[meta].reduce( (obj, item) => {
+            for (var meta in filters) {
+              reducedMeta = game.meta[meta].reduce( (obj, item) => {
                 console.log(obj, item);
                 return obj;
               });
             }
+
+            console.log(reducedMeta);
+            break;
           }
 
           gameContainer.innerHTML = gameTemplate(games);
