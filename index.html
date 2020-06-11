@@ -92,9 +92,9 @@
             var game = games[i];
 
             for (var meta in game.meta) {
-              game.meta[meta].each( (key, value) => {
+              for (var key in game.meta[meta]) {
                 filters[meta][key] = value;
-              });
+              }
             }
           }
 
