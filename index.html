@@ -76,20 +76,28 @@
       fetch('/whats-in-the-bundle/data/games.json')
         .then( (response) => response.json() )
         .then( (games) => {
-          var container = document.getElementById('content');
-          var template = doT.template(document.getElementById('gameTemplate').text);
+          var gameContainer = document.getElementById('content');
+          var gameTemplate = doT.template(document.getElementById('gameTemplate').text);
+
+          var metaContainer = document.getElementById('filters');
+          var metaTemplate = doT.template(document.getElementById('filterTemplate').text);
+
           var meta = {
             "genre" : [],
-            "tags" : [],
-            "platform" : []
+            "platform" : [],
+            "tag" : []
           };
 
-          for (var game in games) {
-            console.log(game);
-            break;
+          for (var i in games) {
+            var game = games[i];
+
+            meta["genre"] = Array.from(new Set(meta["genre"].concat(game.meta.genre)));
+            meta["platform"] = Array.from(new Set(meta["platform"].concat(game.meta.platforms)));
+            meta["tag"] = Array.from(new Set(meta["tag"].concat(game.meta.tags)));
           }
 
-          container.innerHTML = template(games);
+          gameContainer.innerHTML = gameTemplate(games);
+          metaContainer.innerHTML = metaTemplate(meta);
 
           $('#numGames').html(games.length);
         })
