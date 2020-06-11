@@ -12,17 +12,17 @@
         There are currently <span id="numGames">a lot of</span> games in the <a href="https://itch.io/b/520/bundle-for-racial-justice-and-equality" target="_blank">Bundle for Racial Justice and Equality</a> on itch.io.  Get them all now for a minimum of $5!
       </p>
     </div>
-    
+
     <div id="filters" class="filters">
       Loading...
     </div>
 
     <hr>
-    
+
     <div id="content" class="grid">
       Loading...
     </div>
-    
+
     <script id="filterTemplate" type="text/x-dot-template">
       {{ for (var filter in it) { }}
         <div id="{{=filter}}" class="filter-group col">
@@ -35,7 +35,7 @@
         </div>
       {{ } }}
     </script>
-    
+
     <script id="gameTemplate" type="text/x-dot-template">
       {{~ it :game }}
         <div class="grid-item {{~ game.meta :meta }} {{ for (var key in meta) { }}{{=key}}{{ } }}{{~}}">
@@ -65,65 +65,62 @@
         </div>
       {{~}}
     </script>
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dot/1.1.3/doT.min.js"></script>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@16.1.0/dist/lazyload.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    
+
     <script>
-      function loadTemplate (url, templateId, containerId) {
-        return new Promise( (resolve, reject) => {
-          fetch(url)
-            .then( (response) => response.json() )
-            .then( (data) => {
-              var container = document.getElementById(containerId);
-              var template = doT.template(document.getElementById(templateId).text);
+      fetch('/whats-in-the-bundle/data/games.json')
+        .then( (response) => response.json() )
+        .then( (games) => {
+          var container = document.getElementById('content');
+          var template = doT.template(document.getElementById('gameTemplate').text);
+          var meta {
+            "genre" : [],
+            "tags" : [],
+            "platform" : []
+          };
 
-              container.innerHTML = template(data);
+          for (var game in games) {
+            console.log(game);
+            break;
+          }
 
-              resolve();
-            })
-            .catch( (err) => {
-              console.log(err);
-              resolve();
-            });
-        });
-      };
+          container.innerHTML = template(games);
 
-      var promises = [
-        loadTemplate('/whats-in-the-bundle/data/games.json', 'gameTemplate', 'content'),
-        loadTemplate('/whats-in-the-bundle/data/meta.json', 'filterTemplate', 'filters')
-      ];
-      
-      Promise.all(promises).then( () => {
-        new LazyLoad({
-          elements_selector: ".lazy"
-        });
-        
-        $('select').select2({
-          sorter: data => data.sort((a, b) => a.text.localeCompare(b.text))
-        });
-        
-        $('#filters').on('change', 'select', function (e) {
-          var selected = [];
-          
-          $("select").each(function () {
-            selected = selected.concat($(this).select2("val"));
+          $('#numGames').html(games.length);
+        })
+        .then( () => {
+          new LazyLoad({
+            elements_selector: ".lazy"
           });
 
-          if (selected.length > 0) {
-            $('.grid-item').hide();
-            $('.grid-item').filter(selected.join(', ')).show();
-          }
-          else {
-            $('.grid-item').show(); 
-          }
+          $('select').select2({
+            sorter: data => data.sort((a, b) => a.text.localeCompare(b.text))
+          });
+
+          $('#filters').on('change', 'select', function (e) {
+            var selected = [];
+
+            $("select").each(function () {
+              selected = selected.concat($(this).select2("val"));
+            });
+
+            if (selected.length > 0) {
+              $('.grid-item').hide();
+              $('.grid-item').filter(selected.join(', ')).show();
+            }
+            else {
+              $('.grid-item').show();
+            }
+          });
+        })
+        .catch( (err) => {
+          console.log(err);
         });
-        
-        $('#numGames').html($('.grid-item').length);
-      });
     </script>
   </body>
 </html>
