@@ -38,7 +38,7 @@
 
     <script id="gameTemplate" type="text/x-dot-template">
       {{~ it :game }}
-        <div class="grid-item {{~ game.meta :meta }} {{ for (var key in meta) { }}{{=key}}{{ } }}{{~}}">
+        <div class="grid-item {{~ game.meta metaType}}{{~ game.meta[metaType] :meta }} {{=meta}}{{~}}{{~}}">
           <a href="{{=game.url}}" target="_blank">
             <img class="lazy" src="/whats-in-the-bundle/loader.gif" data-src="{{=game.image}}" title="{{=game.name}}" alt="{{=game.name}}">
           </a>
@@ -47,9 +47,9 @@
             <p>{{=game.description}}</p>
           </div>
           <div class="game-meta">
-            {{~ game.meta :meta }} {{ for (var key in meta) { }}
+            {{~ game.meta :meta }}
               <span>#{{=key.replace(/^(tag|genre|platform)-/, '')}}</span>
-            {{ } }}{{~}}
+            {{~}}
           </div>
           <div class="game-location">
             <div class="page">
@@ -90,17 +90,12 @@
 
           for (var i in games) {
             var game = games[i];
-            var reducedMeta = [];
 
             for (var meta in filters) {
-              reducedMeta = game.meta[meta].map( (key, value) => {
-                console.log(key, value);
+              game.meta[meta].each( (key, value) => {
+                filters[meta][key] = value;
               });
             }
-
-            console.log("ARE YOU READY?");
-
-            console.log(reducedMeta);
             break;
           }
 
