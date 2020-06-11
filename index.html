@@ -38,7 +38,7 @@
 
     <script id="gameTemplate" type="text/x-dot-template">
       {{~ it :game }}
-        <div class="grid-item {{~ game.meta metaType}}{{~ game.meta[metaType] :meta }} {{=meta}}{{~}}{{~}}">
+        <div class="grid-item {{~ game.meta :metaType}}{{~ game.meta[metaType] :meta }} {{=meta}}{{~}}{{~}}">
           <a href="{{=game.url}}" target="_blank">
             <img class="lazy" src="/whats-in-the-bundle/loader.gif" data-src="{{=game.image}}" title="{{=game.name}}" alt="{{=game.name}}">
           </a>
