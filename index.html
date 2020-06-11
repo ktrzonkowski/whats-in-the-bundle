@@ -26,7 +26,7 @@
     <script id="filterTemplate" type="text/x-dot-template">
       {{ for (var filter in it) { }}
         <div id="{{=filter}}" class="filter-group col">
-          <label>{{=filter.toUpperCase()}}S</label>
+          <label>{{=filter.toUpperCase()}}</label>
           <select multiple="multiple">
             {{ for (var key in it[filter]) { }}
               <option value=".{{=key}}">{{=it[filter][key]}}</option>
@@ -93,11 +93,12 @@
             var reducedMeta = [];
 
             for (var meta in filters) {
-              reducedMeta = game.meta[meta].reduce( (obj, item) => {
-                console.log(obj, item);
-                return obj;
+              reducedMeta = game.meta[meta].map( (key, value) => {
+                console.log(key, value);
               });
             }
+
+            console.log("ARE YOU READY?");
 
             console.log(reducedMeta);
             break;
