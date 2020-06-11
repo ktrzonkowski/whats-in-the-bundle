@@ -6,6 +6,16 @@ body {
   color: #8e8e8e;
 }
 
+h1 {
+  color: #da2c49;
+}
+
+a {
+  color: #da2c49;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .filters {
   display: flex;
 }
@@ -50,12 +60,6 @@ body {
 
 .game-content {
   padding: 15px;
-}
-
-.game-content a {
-  color: #da2c49;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 .game-content p {
