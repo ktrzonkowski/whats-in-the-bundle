@@ -48,7 +48,7 @@
           </div>
           <div class="game-meta">
             {{ for (var meta in game.meta) { }}
-                <span>#{{=meta.replace(/^(tag|genre|platform)-/, '')}}</span>
+                <span>&nbsp;#{{=game.meta[meta].toLowerCase()}}&nbsp;</span>
             {{ } }}
           </div>
           <div class="game-location">
