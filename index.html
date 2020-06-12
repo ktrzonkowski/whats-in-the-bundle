@@ -16,6 +16,9 @@
     <div id="filters" class="filters">
       Loading...
     </div>
+    
+    
+    <p id="feelingLucky"><small>🎲 I'm Feeling Lucky!</small></p>
 
     <hr>
 
@@ -130,6 +133,12 @@
             else {
               $('.grid-item').show();
             }
+          });
+        
+          $('#feelingLucky').on('click', function (e) {
+            var gameOptions = $('.grid-item:visible');
+
+            $('a', gameOptions[Math.floor(Math.random() * gameOptions.length)]).get(0).click();
           });
         })
         .catch( (err) => {
