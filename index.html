@@ -38,10 +38,7 @@
 
     <script id="gameTemplate" type="text/x-dot-template">
       {{~ it :game }}
-        <div class="grid-item
-            {{~ game.meta.genre :meta}}{{=meta}}{{~}}
-            {{~ game.meta.platforms :meta}}{{=meta}}{{~}}
-            {{~ game.meta.tags :meta}}{{=meta}}{{~}}">
+        <div class="grid-item{{~ game.meta :key}} {{=key}}{{~}}">
           <a href="{{=game.url}}" target="_blank">
             <img class="lazy" src="/whats-in-the-bundle/loader.gif" data-src="{{=game.image}}" title="{{=game.name}}" alt="{{=game.name}}">
           </a>
@@ -50,10 +47,8 @@
             <p>{{=game.description}}</p>
           </div>
           <div class="game-meta">
-            {{~ game.meta :meta }}
-              {{~ meta :key}}
-              <span>#{{=key.replace(/^(tag|genre|platform)-/, '')}}</span>
-              {{~}}
+            {{~ game.meta :key:value }}
+                <span>#{{=key.replace(/^(tag|genre|platform)-/, '')}}</span>
             {{~}}
           </div>
           <div class="game-location">
@@ -99,8 +94,12 @@
             for (var meta in filters) {
               for (var key in game.meta[meta]) {
                 filters[meta][key] = game.meta[meta][key];
+
+                tmp[key] = game.meta[meta][key];
               }
             }
+
+            games[i].meta = tmp;
           }
 
           gameContainer.innerHTML = gameTemplate(games);
