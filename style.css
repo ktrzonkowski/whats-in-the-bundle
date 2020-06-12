@@ -16,6 +16,12 @@ a {
   font-weight: bold;
 }
 
+button {
+  color: #ffffff;
+  background: #da2c49;
+  border-color: #da2c49;
+}
+
 #intro {
   text-align: center;
   margin-bottom: 25px;
