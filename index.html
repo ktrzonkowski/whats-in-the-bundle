@@ -92,11 +92,10 @@
             var game = games[i];
 
             for (var meta in filters) {
-              game.meta[meta].each( (key, value) => {
-                filters[meta][key] = value;
-              });
+              for (var key in game.meta[meta]) {
+                filters[meta][key] = game.meta[meta][key];
+              }
             }
-            break;
           }
 
           gameContainer.innerHTML = gameTemplate(games);
