@@ -38,7 +38,7 @@
 
     <script id="gameTemplate" type="text/x-dot-template">
       {{~ it :game }}
-        <div class="grid-item{{~ game.meta :key}} {{=key}}{{~}}">
+        <div class="grid-item{{ for (var meta in game.meta) { }} {{=meta}}{{ } }}">
           <a href="{{=game.url}}" target="_blank">
             <img class="lazy" src="/whats-in-the-bundle/loader.gif" data-src="{{=game.image}}" title="{{=game.name}}" alt="{{=game.name}}">
           </a>
@@ -47,9 +47,9 @@
             <p>{{=game.description}}</p>
           </div>
           <div class="game-meta">
-            {{~ game.meta :key:value }}
-                <span>#{{=key.replace(/^(tag|genre|platform)-/, '')}}</span>
-            {{~}}
+            {{ for (var meta in game.meta) { }}
+                <span>#{{=meta.replace(/^(tag|genre|platform)-/, '')}}</span>
+            {{ } }}
           </div>
           <div class="game-location">
             <div class="page">
