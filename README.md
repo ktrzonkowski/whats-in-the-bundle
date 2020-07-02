@@ -8,8 +8,6 @@ Being the person that I am, my first instinct is to collect all the relevant dat
 
 And that brings us to this repository.
 
-# So what's in the bundle?
+# So what IS in the bundle?
 
-A LOT.  Please check it out before June 17, 2020!  You can help support for as little as $5 and get literally hundreds of games to try.  And if you really like a game, consider buying a copy of it to support its creator!
-
-https://itch.io/b/520/bundle-for-racial-justice-and-equality
+A lot!  You can view the entire list here: https://ktrzonkowski.github.io/whats-in-the-bundle/
